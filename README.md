@@ -204,6 +204,9 @@ services-ingress   nginx   hello.cloudcrypto.in,profile.cloudcrypto.in,cloudcryp
 
 ![Cloudflare DNS Update](./Screenshots/image-17.png)
 
+---
+---
+
 # Project Teardown Guide
 This guide provides the steps to delete all resources created for the project on Azure, including deployments, services, and the Azure Kubernetes Service (AKS) cluster.
 
