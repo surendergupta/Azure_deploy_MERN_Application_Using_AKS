@@ -203,3 +203,63 @@ services-ingress   nginx   hello.cloudcrypto.in,profile.cloudcrypto.in,cloudcryp
 ![frontend](./Screenshots/image-16.png)
 
 ![Cloudflare DNS Update](./Screenshots/image-17.png)
+
+# Project Teardown Guide
+This guide provides the steps to delete all resources created for the project on Azure, including deployments, services, and the Azure Kubernetes Service (AKS) cluster.
+
+## Prerequisites
+
+- Azure CLI installed
+- Access to the Azure account with necessary permissions
+- `kubectl` configured to interact with the AKS cluster
+
+## Step-by-Step Instructions
+
+### Step 1: Delete Kubernetes Deployments
+
+First, delete the Kubernetes deployments for the services:
+
+```bash
+kubectl delete deployment hello-service-pod
+kubectl delete deployment profile-service-pod
+kubectl delete deployment frontend-pod
+```
+### Step 2: Delete Kubernetes Services
+
+Next, delete the Kubernetes services associated with the deployments:
+
+```bash
+kubectl delete service hello-service-svc
+kubectl delete service profile-service-svc
+kubectl delete service frontend-svc
+```
+
+### Step 3: Verify Deletion
+
+To ensure that all deployments and services have been deleted, you can list the remaining deployments and services:
+
+```bash
+kubectl get deployments
+kubectl get services
+kubectl get ingress
+```
+
+### Step 4: Delete the AKS Cluster
+Now, delete the AKS cluster. Replace <resource-group-name> and <aks-cluster-name> with the appropriate values.
+
+```bash
+az aks list --output table
+az aks delete --resource-group mern_deploy --name mern-micro-cluster --yes --no-wait
+
+```
+
+### Step 5: Verify AKS Cluster Deletion
+
+```bash
+az aks list --output table
+
+```
+
+![Cluster list and Delete Resouce](./Screenshots/image-18.png)
+
+![Deleting Resouce and get emply cluster list](./Screenshots/image-19.png)
