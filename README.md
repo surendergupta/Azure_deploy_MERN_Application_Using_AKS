@@ -202,3 +202,4 @@ services-ingress   nginx   hello.cloudcrypto.in,profile.cloudcrypto.in,cloudcryp
 
 ![frontend](./Screenshots/image-16.png)
 
+![Cloudflare DNS Update](./Screenshots/image-17.png)
